@@ -11,7 +11,7 @@
       --header-bg: #808080; /* Medium grey for headers */
       --code-bg: #d3d3d3; /* Light grey for code areas */
       --text: #000000; /* Black text for readability */
-      --comment: #000000; /* Black for all // comments */
+      --comment: #000000; /* Black for comments */
       --hint: #a9a9a9; /* Medium grey for hints */
       --accent: #ffffff; /* White accents */
       --btn: #a9a9a9; /* Grey buttons */
@@ -190,64 +190,64 @@
 <script>
   let chapters = [
     {
-      "title": "CHAPTER 1: Default Function Linkage in C vs C++",
-      "steps": [
-        { "comment": "// Overall Difference: In C, functions have simple external names without mangling, making linking straightforward but no overloading support. In C++, name mangling encodes types for overloading, but requires extern \"C\" for C compatibility. Impact: Critical for mixed-language projects; prevents linker errors.", "code": "" },
-        { "comment": "// myfunc.c — This is a C source file. In C, functions have external linkage by default and simple names (no mangling).", "code": "// myfunc.c" },
-        { "comment": "// #include <stdio.h> — Includes the standard I/O library so we can use printf for output.", "code": "#include <stdio.h>" },
-        { "comment": "// void my_func(int x) { — Defines a function named my_func that takes one integer parameter.", "code": "void my_func(int x) {" },
-        { "comment": "// printf(\"%d\\n\", x); — Prints the integer value passed into the function, followed by a newline.", "code": " printf(\"%d\\n\", x);" },
-        { "comment": "// } — Marks the end of the function definition.", "code": "}" },
-        { "comment": "// int main() { — Entry point of the C program. Execution starts here.", "code": "int main() {" },
-        { "comment": "// my_func(42); — Calls our function with the integer 42 as an argument.", "code": " my_func(42);" },
-        { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
-        { "comment": "// } — End of the main function.", "code": "}" },
-        { "comment": "// Note: When compiled with gcc, the symbol name remains simple (e.g., _my_func) because C does not mangle names.", "code": "" },
-        { "comment": "// myfunc.cpp — This is a C++ source file. In C++, functions use name mangling to support overloading.", "code": "// myfunc.cpp" },
-        { "comment": "// #include <iostream> — Includes the C++ I/O stream library so we can use std::cout for output.", "code": "#include <iostream>" },
-        { "comment": "// void my_func(int x) { — Defines a function with the same signature as in C, but internally the compiler mangles the name.", "code": "void my_func(int x) {" },
-        { "comment": "// std::cout << x << \"\\n\"; — Prints the integer value using C++ streams, followed by a newline.", "code": " std::cout << x << \"\\n\";" },
-        { "comment": "// } — Marks the end of the function definition.", "code": "}" },
-        { "comment": "// int main() { — Entry point of the C++ program. Execution starts here.", "code": "int main() {" },
-        { "comment": "// my_func(42); — Calls our function with the integer 42 as an argument.", "code": " my_func(42);" },
-        { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
-        { "comment": "// } — End of the main function.", "code": "}" },
-        { "comment": "// Practical Impact: Because of name mangling, the symbol name in compiled C++ code is more complex. To make it compatible with C, use extern \"C\".", "code": "/* extern \"C\" void my_func(int x); */" }
-      ]
-    },
+  "title": "CHAPTER 1: Default Function Linkage in C vs C++",
+  "steps": [
+    { "comment": "// Overall Difference: In C, functions have simple external names without mangling, making linking straightforward but no overloading support. In C++, name mangling encodes types for overloading, but requires extern \"C\" for C compatibility. Impact: Critical for mixed-language projects; prevents linker errors.", "code": "" },
+    { "comment": "// myfunc.c — This is a C source file. In C, functions have external linkage by default and simple names (no mangling).", "code": "// myfunc.c" },
+    { "comment": "// #include <stdio.h> — Includes the standard I/O library so we can use printf for output.", "code": "#include <stdio.h>" },
+    { "comment": "// void my_func(int x) { — Defines a function named my_func that takes one integer parameter.", "code": "void my_func(int x) {" },
+    { "comment": "// printf(\"%d\\n\", x); — Prints the integer value passed into the function, followed by a newline.", "code": " printf(\"%d\\n\", x);" },
+    { "comment": "// } — Marks the end of the function definition.", "code": "}" },
+    { "comment": "// int main() { — Entry point of the C program. Execution starts here.", "code": "int main() {" },
+    { "comment": "// my_func(42); — Calls our function with the integer 42 as an argument.", "code": " my_func(42);" },
+    { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
+    { "comment": "// } — End of the main function.", "code": "}" },
+    { "comment": "// Note: When compiled with gcc, the symbol name remains simple (e.g., _my_func) because C does not mangle names.", "code": "" },
+    { "comment": "// myfunc.cpp — This is a C++ source file. In C++, functions use name mangling to support overloading.", "code": "// myfunc.cpp" },
+    { "comment": "// #include <iostream> — Includes the C++ I/O stream library so we can use std::cout for output.", "code": "#include <iostream>" },
+    { "comment": "// void my_func(int x) { — Defines a function with the same signature as in C, but internally the compiler mangles the name.", "code": "void my_func(int x) {" },
+    { "comment": "// std::cout << x << \"\\n\"; — Prints the integer value using C++ streams, followed by a newline.", "code": " std::cout << x << \"\\n\";" },
+    { "comment": "// } — Marks the end of the function definition.", "code": "}" },
+    { "comment": "// int main() { — Entry point of the C++ program. Execution starts here.", "code": "int main() {" },
+    { "comment": "// my_func(42); — Calls our function with the integer 42 as an argument.", "code": " my_func(42);" },
+    { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
+    { "comment": "// } — End of the main function.", "code": "}" },
+    { "comment": "// Practical Impact: Because of name mangling, the symbol name in compiled C++ code is more complex. To make it compatible with C, use extern \"C\".", "code": "/* extern \"C\" void my_func(int x); */" }
+  ]
+},
     {
-      "title": "CHAPTER 2: Function Overloading in C vs C++",
-      "steps": [
-        { "comment": "// Overall Difference: C does not support overloading, requiring unique names for similar functions. C++ allows overloading based on parameters, enabling cleaner APIs. Impact: Reduces naming clutter in C++; compiler resolves calls. Nuances: Can cause ambiguity.", "code": "" },
-        { "comment": "// myfunc_overload.c — This is a C source file. In C, function overloading is not supported, so each function must have a unique name.", "code": "// myfunc_overload.c" },
-        { "comment": "// #include <stdio.h> — Includes the standard I/O library so we can use printf for output.", "code": "#include <stdio.h>" },
-        { "comment": "// void print_int(int x) { — Defines a function specifically for printing integers.", "code": "void print_int(int x) {" },
-        { "comment": "// printf(\"%d\\n\", x); — Prints the integer value passed into the function, followed by a newline.", "code": " printf(\"%d\\n\", x);" },
-        { "comment": "// } — Marks the end of the function definition.", "code": "}" },
-        { "comment": "// void print_double(double x) { — Defines a separate function specifically for printing doubles.", "code": "void print_double(double x) {" },
-        { "comment": "// printf(\"%f\\n\", x); — Prints the double value passed into the function, followed by a newline.", "code": " printf(\"%f\\n\", x);" },
-        { "comment": "// } — Marks the end of the function definition.", "code": "}" },
-        { "comment": "// int main() { — Entry point of the C program. Execution starts here.", "code": "int main() {" },
-        { "comment": "// print_int(42); — Calls the integer-specific function with an integer argument.", "code": " print_int(42);" },
-        { "comment": "// print_double(3.14); — Calls the double-specific function with a double argument.", "code": " print_double(3.14);" },
-        { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
-        { "comment": "// } — End of the main function.", "code": "}" },
-        { "comment": "// myfunc_overload.cpp — This is a C++ source file. In C++, function overloading is supported, allowing multiple functions with the same name but different parameters.", "code": "// myfunc_overload.cpp" },
-        { "comment": "// #include <iostream> — Includes the C++ I/O stream library so we can use std::cout for output.", "code": "#include <iostream>" },
-        { "comment": "// void print(int x) { — Defines an overload of print for integer parameters.", "code": "void print(int x) {" },
-        { "comment": "// std::cout << x << \"\\n\"; — Prints the integer value using C++ streams, followed by a newline.", "code": " std::cout << x << \"\\n\";" },
-        { "comment": "// } — Marks the end of the function definition.", "code": "}" },
-        { "comment": "// void print(double x) { — Defines another overload of print for double parameters.", "code": "void print(double x) {" },
-        { "comment": "// std::cout << x << \"\\n\"; — Prints the double value using C++ streams, followed by a newline.", "code": " std::cout << x << \"\\n\";" },
-        { "comment": "// } — Marks the end of the function definition.", "code": "}" },
-        { "comment": "// int main() { — Entry point of the C++ program. Execution starts here.", "code": "int main() {" },
-        { "comment": "// print(42); — Calls the integer overload based on argument type.", "code": " print(42);" },
-        { "comment": "// print(3.14); — Calls the double overload based on argument type.", "code": " print(3.14);" },
-        { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
-        { "comment": "// } — End of the main function.", "code": "}" },
-        { "comment": "// Impact: C requires unique names for different types, leading to verbose APIs. C++ overloading enables cleaner code; the compiler resolves the correct function based on arguments. Nuances: Overloading can cause ambiguity if signatures are too similar.", "code": "/* Call: print(42); print(3.14); */" }
-      ]
-    },
+  "title": "CHAPTER 2: Function Overloading in C vs C++",
+  "steps": [
+    { "comment": "// Overall Difference: C does not support overloading, requiring unique names for similar functions. C++ allows overloading based on parameters, enabling cleaner APIs. Impact: Reduces naming clutter in C++; compiler resolves calls. Nuances: Can cause ambiguity.", "code": "" },
+    { "comment": "// myfunc_overload.c — This is a C source file. In C, function overloading is not supported, so each function must have a unique name.", "code": "// myfunc_overload.c" },
+    { "comment": "// #include <stdio.h> — Includes the standard I/O library so we can use printf for output.", "code": "#include <stdio.h>" },
+    { "comment": "// void print_int(int x) { — Defines a function specifically for printing integers.", "code": "void print_int(int x) {" },
+    { "comment": "// printf(\"%d\\n\", x); — Prints the integer value passed into the function, followed by a newline.", "code": " printf(\"%d\\n\", x);" },
+    { "comment": "// } — Marks the end of the function definition.", "code": "}" },
+    { "comment": "// void print_double(double x) { — Defines a separate function specifically for printing doubles.", "code": "void print_double(double x) {" },
+    { "comment": "// printf(\"%f\\n\", x); — Prints the double value passed into the function, followed by a newline.", "code": " printf(\"%f\\n\", x);" },
+    { "comment": "// } — Marks the end of the function definition.", "code": "}" },
+    { "comment": "// int main() { — Entry point of the C program. Execution starts here.", "code": "int main() {" },
+    { "comment": "// print_int(42); — Calls the integer-specific function with an integer argument.", "code": " print_int(42);" },
+    { "comment": "// print_double(3.14); — Calls the double-specific function with a double argument.", "code": " print_double(3.14);" },
+    { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
+    { "comment": "// } — End of the main function.", "code": "}" },
+    { "comment": "// myfunc_overload.cpp — This is a C++ source file. In C++, function overloading is supported, allowing multiple functions with the same name but different parameters.", "code": "// myfunc_overload.cpp" },
+    { "comment": "// #include <iostream> — Includes the C++ I/O stream library so we can use std::cout for output.", "code": "#include <iostream>" },
+    { "comment": "// void print(int x) { — Defines an overload of print for integer parameters.", "code": "void print(int x) {" },
+    { "comment": "// std::cout << x << \"\\n\"; — Prints the integer value using C++ streams, followed by a newline.", "code": " std::cout << x << \"\\n\";" },
+    { "comment": "// } — Marks the end of the function definition.", "code": "}" },
+    { "comment": "// void print(double x) { — Defines another overload of print for double parameters.", "code": "void print(double x) {" },
+    { "comment": "// std::cout << x << \"\\n\"; — Prints the double value using C++ streams, followed by a newline.", "code": " std::cout << x << \"\\n\";" },
+    { "comment": "// } — Marks the end of the function definition.", "code": "}" },
+    { "comment": "// int main() { — Entry point of the C++ program. Execution starts here.", "code": "int main() {" },
+    { "comment": "// print(42); — Calls the integer overload based on argument type.", "code": " print(42);" },
+    { "comment": "// print(3.14); — Calls the double overload based on argument type.", "code": " print(3.14);" },
+    { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
+    { "comment": "// } — End of the main function.", "code": "}" },
+    { "comment": "// Impact: C requires unique names for different types, leading to verbose APIs. C++ overloading enables cleaner code; the compiler resolves the correct function based on arguments. Nuances: Overloading can cause ambiguity if signatures are too similar.", "code": "/* Call: print(42); print(3.14); */" }
+  ]
+},
     {
   "title": "CHAPTER 3: Default Arguments in C vs C++",
   "steps": [
@@ -293,7 +293,7 @@
     { "comment": "// public: void set(int a, int b) { x = a; y = b; } — Public method for controlled access to private data.", "code": " public: void set(int a, int b) { x = a; y = b; }" },
     { "comment": "// }; — Marks the end of the class definition.", "code": "};" },
     { "comment": "// int main() { — Entry point of the C++ program. Execution starts here.", "code": "int main() {" },
-    { "comment": "// Point p; — Declares a class variable.",    "code": " Point p;" },
+    { "comment": "// Point p; — Declares a class variable.", "code": " Point p;" },
     { "comment": "// p.set(1, 2); — Uses public method to set private members.", "code": " p.set(1, 2);" },
     { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
     { "comment": "// } — End of the main function.", "code": "}" },
@@ -407,7 +407,7 @@
     { "comment": "// }; — Marks the end of the class definition.", "code": "};" },
     { "comment": "// int main() { — Entry point of the C++ program. Execution starts here.", "code": "int main() {" },
     { "comment": "// Point p1(1, 2), p2(3, 4); — Declares two objects.", "code": " Point p1(1, 2), p2(3, 4);" },
-    { "comment": "// Point sum = p1 + p2; — Uses overloaded operator.",    "code": " Point sum = p1 + p2;" },
+    { "comment": "// Point sum = p1 + p2; — Uses overloaded operator.", "code": " Point sum = p1 + p2;" },
     { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
     { "comment": "// } — End of the main function.", "code": "}" },
     { "comment": "// Impact: C requires functions for ops. C++ overloading makes syntax natural. Nuances: Const-correct overloads. Implications: Intuitive code, but misuse can lead to confusing operators.", "code": "/* Point p1(1,2), p2(3,4); Point sum = p1 + p2; */" }
@@ -469,7 +469,7 @@
   "steps": [
     { "comment": "// Overall Difference: malloc/free raw allocation. new/delete call ctors/dtors. Impact: Object integration in C++. Nuances: Array delete[].", "code": "" },
     { "comment": "// myalloc.c — This is a C source file. In C, use malloc/free for dynamic memory.", "code": "// myalloc.c" },
-    { "comment": "// #include <stdlib.h> — Includes standard library for malloc/free.",    "code": "#include <stdlib.h>" },
+    { "comment": "// #include <stdlib.h> — Includes standard library for malloc/free.", "code": "#include <stdlib.h>" },
     { "comment": "// int* arr = malloc(10 * sizeof(int)); — Allocates raw memory for 10 ints.", "code": "int* arr = malloc(10 * sizeof(int));" },
     { "comment": "// free(arr); — Frees memory; no destructors called.", "code": "free(arr);" },
     { "comment": "// int main() { — Entry point of the C program. Execution starts here.", "code": "int main() {" },
@@ -552,7 +552,7 @@
     { "comment": "// std::cout << sum << \"\\n\"; — Prints result.", "code": " std::cout << sum << \"\\n\";" },
     { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
     { "comment": "// } — End of the main function.", "code": "}" },
-    { "comment": "// Impact: C macros unsafe/no type check. C++ templates compile-time safe. Nuances: Specialization needed for edge cases. Implications: Reusable code, but template errors complex.", "code": "/* add<int>(1,2); add<double>(1.5,2.5); */" }
+    { "comment": "// Impact: C macros unsafe/no type check. C++ templates compile-time safe. Nuances: Specialization needed for edge cases. Implications: Metaprogramming, but template errors complex.", "code": "/* add<int>(1,2); add<double>(1.5,2.5); */" }
   ]
 },
     {
@@ -581,7 +581,7 @@
   "title": "CHAPTER 16: Exceptions in C vs C++",
   "steps": [
     { "comment": "// Overall Difference: C error codes. C++ exceptions for separation. Impact: Clean paths in C++. Nuances: Overhead/unwinding.", "code": "" },
-    { "comment": "// myexceptions.c — This is a C source file. In C, use error codes for handling.",    "code": "// myexceptions.c" },
+    { "comment": "// myexceptions.c — This is a C source file. In C, use error codes for handling.", "code": "// myexceptions.c" },
     { "comment": "// int func() { return -1; } — Returns error code.", "code": "int func() { return -1; }" },
     { "comment": "// int main() { — Entry point of the C program. Execution starts here.", "code": "int main() {" },
     { "comment": "// int result = func(); if (result == -1) printf(\"Error\\n\"); — Manual check.", "code": " int result = func(); if (result == -1) printf(\"Error\\n\");" },
@@ -604,7 +604,7 @@
     { "comment": "// myauto.c — This is a C source file. In C (C23+), auto is limited deduction.", "code": "// myauto.c" },
     { "comment": "// auto x = 42; — Deduce as int; limited to simple cases.", "code": "auto x = 42;" },
     { "comment": "// int main() { — Entry point of the C program. Execution starts here.", "code": "int main() {" },
-    { "comment": "// auto x = 42; printf(\"%d\\n\", x); — Uses deduced type.",    "code": " auto x = 42; printf(\"%d\\n\", x);" },
+    { "comment": "// auto x = 42; printf(\"%d\\n\", x); — Uses deduced type.", "code": " auto x = 42; printf(\"%d\\n\", x);" },
     { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
     { "comment": "// } — End of the main function.", "code": "}" },
     { "comment": "// myauto.cpp — This is a C++ source file. In C++, auto is powerful for complex types.", "code": "// myauto.cpp" },
@@ -712,7 +712,7 @@
     { "comment": "// myinline.cpp — This is a C++ source file. In C++, inline is stronger; common in headers.", "code": "// myinline.cpp" },
     { "comment": "// inline int add(int a, int b) { return a + b; } — Inline for optimization.", "code": "inline int add(int a, int b) { return a + b; }" },
     { "comment": "// int main() { — Entry point of the C++ program. Execution starts here.", "code": "int main() {" },
-    { "comment": "// int sum = add(1, 2); — Calls inline function; likely inlined.",    "code": " int sum = add(1, 2);" },
+    { "comment": "// int sum = add(1, 2); — Calls inline function; likely inlined.", "code": " int sum = add(1, 2);" },
     { "comment": "// std::cout << sum << \"\\n\"; — Prints result.", "code": " std::cout << sum << \"\\n\";" },
     { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
     { "comment": "// } — End of the main function.", "code": "}" },
@@ -752,7 +752,7 @@
     { "comment": "// myinit.cpp — This is a C++ source file. In C++ (C++20+), designated initializers supported.", "code": "// myinit.cpp" },
     { "comment": "// struct Point p{.x=1, .y=2}; — Initializes members by name.", "code": "struct Point p{.x=1, .y=2};" },
     { "comment": "// int main() { — Entry point of the C++ program. Execution starts here.", "code": "int main() {" },
-    { "comment": "// struct Point p{.x=1, .y=2}; std::cout << p.x << \" \" << p.y << \"\\n\"; — Uses designated init.",    "code": " struct Point p{.x=1, .y=2}; std::cout << p.x << \" \" << p.y << \"\\n\";" },
+    { "comment": "// struct Point p{.x=1, .y=2}; std::cout << p.x << \" \" << p.y << \"\\n\"; — Uses designated init.", "code": " struct Point p{.x=1, .y=2}; std::cout << p.x << \" \" << p.y << \"\\n\";" },
     { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
     { "comment": "// } — End of the main function.", "code": "}" },
     { "comment": "// Impact: C C99 feature for readability. C++20 adopts it. Nuances: Order independent. Implications: Safer init, but C++ aggregates only.", "code": "/* Use in modern code. */" }
@@ -789,7 +789,7 @@
     { "comment": "// Overall Difference: C manual free. C++ dtor auto-cleanup. Impact: Leak prevention in C++. Nuances: Scope-based.", "code": "" },
     { "comment": "// myraii.c — This is a C source file. In C, manual free for resources.", "code": "// myraii.c" },
     { "comment": "// void* p = malloc(100); — Allocates raw memory.", "code": "void* p = malloc(100);" },
-    { "comment": "// /* Use p */ free(p); — Manual free required.",    "code": "/* Use p */ free(p);" },
+    { "comment": "// /* Use p */ free(p); — Manual free required.", "code": "/* Use p */ free(p);" },
     { "comment": "// int main() { — Entry point of the C program. Execution starts here.", "code": "int main() {" },
     { "comment": "// void* p = malloc(100); /* Use p */ free(p); — Manual management.", "code": " void* p = malloc(100); /* Use p */ free(p);" },
     { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
@@ -811,7 +811,7 @@
     { "comment": "// Overall Difference: C manual structures. C++ STL dynamic. Impact: Less code/productivity in C++. Nuances: Capacity vs size.", "code": "" },
     { "comment": "// mystl.c — This is a C source file. In C, manual resize for arrays.", "code": "// mystl.c" },
     { "comment": "// int* arr = malloc(10 * sizeof(int)); — Manual allocation.", "code": "int* arr = malloc(10 * sizeof(int));" },
-    { "comment": "// /* Manual resize */ free(arr); — Custom logic for resizing.",    "code": "/* Manual resize */ free(arr);" },
+    { "comment": "// /* Manual resize */ free(arr); — Custom logic for resizing.", "code": "/* Manual resize */ free(arr);" },
     { "comment": "// int main() { — Entry point of the C program. Execution starts here.", "code": "int main() {" },
     { "comment": "// int* arr = malloc(10 * sizeof(int)); /* Manual resize */ free(arr); — Manual handling.", "code": " int* arr = malloc(10 * sizeof(int)); /* Manual resize */ free(arr);" },
     { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
@@ -842,7 +842,7 @@
     { "comment": "// #include <vector> — Includes vector.", "code": "#include <vector>" },
     { "comment": "// void func(const std::vector<double>& v) { /* Can't modify */ } — Const ref prevents changes.", "code": "void func(const std::vector<double>& v) { /* Can't modify */ }" },
     { "comment": "// int main() { — Entry point of the C++ program. Execution starts here.", "code": "int main() {" },
-    { "comment": "// std::vector<double> v{1.0}; func(v); — Passes const ref; safe.",    "code": " std::vector<double> v{1.0}; func(v);" },
+    { "comment": "// std::vector<double> v{1.0}; func(v); — Passes const ref; safe.", "code": " std::vector<double> v{1.0}; func(v);" },
     { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
     { "comment": "// } — End of the main function.", "code": "}" },
     { "comment": "// Impact: C pointers modifiable/null. C++ const refs safer. Nuances: Refs non-reassignable. Implications: Fewer bugs, but const propagation needed.", "code": "/* Safer interfaces. */" },
@@ -865,7 +865,7 @@
     { "comment": "// std::unique_ptr<int> p = std::make_unique<int>(42); — Auto-deletes.", "code": "std::unique_ptr<int> p = std::make_unique<int>(42);" },
     { "comment": "// int main() { — Entry point of the C++ program. Execution starts here.", "code": "int main() {" },
     { "comment": "// std::unique_ptr<int> p = std::make_unique<int>(42); — Ownership clear.", "code": " std::unique_ptr<int> p = std::make_unique<int>(42);" },
-    { "comment": "// std::cout << *p << \"\\n\"; — Accesses value.",    "code": " std::cout << *p << \"\\n\";" },
+    { "comment": "// std::cout << *p << \"\\n\"; — Accesses value.", "code": " std::cout << *p << \"\\n\";" },
     { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
     { "comment": "// } — End of the main function.", "code": "}" },
     { "comment": "// Impact: C raw leaks common. C++ smart rare leaks. Nuances: Unique exclusive, shared ref-counted. Implications: Clear ownership, but ref-count overhead.", "code": "/* Scope exit deletes. */" },
@@ -905,7 +905,7 @@
     { "comment": "// myjump.c — This is a C source file. In C, malloc/manual management/error codes.", "code": "// myjump.c" },
     { "comment": "// void* p = malloc(100); — Allocates raw memory.", "code": "void* p = malloc(100);" },
     { "comment": "// if (!p) return -1; — Error code for failure.", "code": "if (!p) return -1;" },
-    { "comment": "// /* Use p */ free(p); — Manual cleanup.",    "code": "/* Use p */ free(p);" },
+    { "comment": "// /* Use p */ free(p); — Manual cleanup.", "code": "/* Use p */ free(p);" },
     { "comment": "// int main() { — Entry point of the C program. Execution starts here.", "code": "int main() {" },
     { "comment": "// void* p = malloc(100); if (!p) return -1; free(p); — Manual with error code.", "code": " void* p = malloc(100); if (!p) return -1; free(p);" },
     { "comment": "// return 0; — Returns 0 to the operating system, signaling successful program termination.", "code": " return 0;" },
